@@ -16,11 +16,12 @@ class Formulario extends React.Component {
       country: this.countryRef.current.value
     } 
 
-    console.log(respuesta);
+    // console.log(respuesta);
 
-  // send to props
+    // send to props
+    this.props.dataQuery(respuesta);
+
   }
-
 
   render() {
     return (
