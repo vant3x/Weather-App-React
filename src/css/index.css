@@ -64,7 +64,20 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
 .error {
   color:white;
   margin-top: 3rem;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+.error h4 {
+  font-size: 1.8em;
+}
+.error h4::after {
+  content: ':(';
+  display: inline;
+  font-size: 2em;
+
 }
 .resultado {
   margin-top: 3rem;

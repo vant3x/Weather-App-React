@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Formulario from './Formulario';
+import Error from './Error';
 
 class App extends Component {
+
   state = {
     error: ''
   }
@@ -12,7 +14,8 @@ class App extends Component {
       error: false
     })
   } 
-     
+    
+  // data query 
   dataQuery = respuesta => {
     if (respuesta.city === '' || respuesta.country === '') {
       this.setState({
@@ -24,6 +27,15 @@ class App extends Component {
   }
 
   render() {
+    const error = this.state.error;
+
+    let resultado;
+
+    if (error) {
+      resultado = <Error mensaje='Ambos campos son obligatorios'/>
+    }
+
+
     return (
       <div className="app">
         <Header 
@@ -32,6 +44,7 @@ class App extends Component {
         <Formulario 
           dataQuery = {this.dataQuery}
         />
+        {resultado}
       </div>
     );
   }
