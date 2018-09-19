@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Formulario from './Formulario';
-import Error from './Error';
+import Header from './components/Header';
+import Formulario from './components/Formulario';
+import Clima from './components/Clima';
+
+import Error from './components/Error';
 
 class App extends Component {
 
@@ -11,6 +13,7 @@ class App extends Component {
     resultado: {}
   }
 
+  // call API
   componentDidUpdate() {
     this.queryApi();
   }
@@ -47,25 +50,30 @@ class App extends Component {
     
   // data query 
   dataQuery = respuesta => {
+    // validate data form
+
     if (respuesta.city === '' || respuesta.country === '') {
       this.setState({
         error: true
       })
     } else {
       this.setState({
-        consulta: respuesta 
+        consulta: respuesta,
+        error: false
       })
     } 
   }
 
   render() {
-    // validate form data
+    // validate component
     const error = this.state.error;
 
     let resultado;
     // error "component"
     if (error) {
       resultado = <Error mensaje='Ambos campos son obligatorios'/>
+    } else {
+      resultado = <Clima resultado={this.state.resultado} />
     }
 
 
