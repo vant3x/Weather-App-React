@@ -20,7 +20,10 @@ class Formulario extends React.Component {
 
     // send to props
     this.props.dataQuery(respuesta);
+    
 
+    // reset form
+    e.currentTarget.reset();
   }
 
   render() {
